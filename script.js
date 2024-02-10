@@ -8,7 +8,7 @@ const button = document.querySelector('.startBtn')
 let result = 0
 let hitPosition
 let timer = null
-let currentTime = 30
+let currentTime = 10
 let countDownTimerId
 
 function randomSquare(){
@@ -26,7 +26,7 @@ function randomSquare(){
 squares.forEach(square => {
     square.addEventListener('mousedown', () => {
         if (square.id ==  hitPosition){
-            result++
+            result = result + 1
             score.innerHTML = result
             hitPosition = null
         }
@@ -41,14 +41,31 @@ function countDown(){
     currentTime--
     timeLeft.innerHTML = currentTime
 
-    if(currentTime == 0){
+    if(currentTime === 0){
         clearInterval(countDownTimerId)
         clearInterval(timer)
-        button.textContent = "GAME OVER! Your Score is : " + result
-        button.style.width = "350px"
+        button.textContent = "PLAY AGAIN"
+        button.style.width = "150px"
+
+        //new code
+        button.addEventListener('click', playAgain);
     }   
 }
 
+function playAgain(){
+    result = 0;
+    currentTime = 10;
+    score.innerHTML = result;
+    timeLeft.innerHTML = currentTime;
+    button.textContent = "START"
+
+    //new code
+    clearInterval(countDownTimerId)
+    clearInterval(timer)
+    moveBug()
+    countDownTimerId = setInterval(countDown, 1000);
+    button.removeEventListener('click', playAgain);
+}
 
 function activefunctions(){
     moveBug()
