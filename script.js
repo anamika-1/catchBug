@@ -54,7 +54,7 @@ function countDown(){
 
 function playAgain(){
     result = 0;
-    currentTime = 10;
+    currentTime = 30;
     score.innerHTML = result;
     timeLeft.innerHTML = currentTime;
     button.textContent = "START"
