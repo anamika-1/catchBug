@@ -8,7 +8,7 @@ const button = document.querySelector('.startBtn')
 let result = 0
 let hitPosition
 let timer = null
-let currentTime = 10
+let currentTime = 30
 let countDownTimerId
 
 function randomSquare(){
